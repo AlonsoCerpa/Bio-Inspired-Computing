@@ -56,6 +56,29 @@ def f1(x1, x2):
 num_iter = 100
 left = -2.048
 right = 2.048
+max_temperature = 10000
+
+"""
+#Prueba 1
+num_pruebas = 100
+cont_a = 0
+cont_b = 0
+for i in range(num_pruebas):
+    x1_a, x2_a, y_array_a = hill_climbing(num_iter, f1, left, right)
+    y_a = f1(x1_a, x2_a)
+
+    x1_b, x2_b, y_array_b = simulated_annealing(num_iter, max_temperature, f1, left, right)
+    y_b = f1(x1_b, x2_b)
+
+    if (y_a > y_b):
+        cont_a += 1
+    else:
+        cont_b += 1
+
+print("Hill Climbing fue mejor en ", cont_a, " de ", num_pruebas, " ocasiones.")
+print("Simulated Annealing fue mejor en ", cont_b, " de ", num_pruebas, " ocasiones.")
+"""
+
 
 x1_a, x2_a, y_array_a = hill_climbing(num_iter, f1, left, right)
 print("Hill climbing")
@@ -63,18 +86,18 @@ print("x1 = ", x1_a)
 print("x2 = ", x2_a)
 print("y = ", f1(x1_a, x2_a))
 plt.plot(y_array_a)
-plt.ylabel('some numbers')
+plt.ylabel('energía')
+plt.xlabel('iteración')
 plt.show()
 
 print("\n")
 
-max_temperature = 10000
 x1_b, x2_b, y_array_b = simulated_annealing(num_iter, max_temperature, f1, left, right)
 print("Simulated annealing")
 print("x1 = ", x1_b)
 print("x2 = ", x2_b)
 print("y = ", f1(x1_b, x2_b))
 plt.plot(y_array_b)
-plt.ylabel('some numbers')
+plt.ylabel('energía')
+plt.xlabel('iteración')
 plt.show()
-
