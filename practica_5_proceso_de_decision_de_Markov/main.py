@@ -52,12 +52,16 @@ def policy_improvement(rewards, discount_factor, P, values):
     for state in range(num_states):
         for action in range(num_actions):
             Q[state, action] = rewards[state] + discount_factor * np.dot(P[action, state], values)
-    policy = np.argmax(Q, axis=1)
+    policy = np.argmax(Q, axis=1)   
     return policy
 
 def main():
+    c = 2
+    a = 3
     rewards = np.array([0, 0, 0, 0, 1])
-    discount_factor = 0.999
+    rewards += c
+    rewards *= a
+    discount_factor = 0.5
     old_policy = np.array([0, 1, 1, 0, 1])
     new_policy = np.array([0, 1, 1, 0, 1])
     P = np.array([[[0, 1, 0, 0, 0],
